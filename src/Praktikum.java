@@ -1,4 +1,3 @@
-import java.util.Optional;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -61,7 +60,6 @@ public class Praktikum {
         userCar.score += points;
         userCar.kilometersTravelled += distance;
     }
-
 
     private static int makeRace(Car userCar, Car opponentCar, int distance) {
         printFlag();
