@@ -20,6 +20,7 @@ public class Praktikum {
         System.out.println("- Закись азота: " + getNitroLevel(userCar.nitroLevel));
 
         Scanner scanner = new Scanner(System.in);
+
         while (true) {
             System.out.println("Что выберете?");
             System.out.println("1 - Устроить заезд");
@@ -65,13 +66,13 @@ public class Praktikum {
     private static int makeRace(Car userCar, Car opponentCar, int distance) {
         printFlag();
         // Напишите логические выражения для определения победителя
-        boolean shortRaceWin = distance <= 15;   // на короткой дистанции
-        boolean longRaceWin = distance >= 50; // на длинной дистанции
+        boolean shortRaceWin = (distance <= 15) && (userCar.acceleration > opponentCar.acceleration);
+        // на короткой дистанции
+        boolean longRaceWin = (distance >= 50) && (userCar.maxSpeed > opponentCar.maxSpeed); // на длинной дистанции
 
         if (shortRaceWin || longRaceWin) { // если победил на короткой или на длинной дистанции
             System.out.println("Вы выиграли!");
             // Найдите и верните наибольшее из максимальных скоростей
-
             return (int) Double.max(userCar.maxSpeed, opponentCar.maxSpeed);
         }
         else if (userCar.acceleration == opponentCar.acceleration) {  // Уровни ускорения должны быть равны
@@ -85,7 +86,7 @@ public class Praktikum {
                 return 0;
             }
             else {
-                System.out.println("Вы проиграли(");
+                System.out.println("Вы проиграли");
                 return -100;
             }
         }
